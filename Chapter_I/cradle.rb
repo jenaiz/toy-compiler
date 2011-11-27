@@ -48,5 +48,3 @@ def init
 end
 
 init
-get_name
-get_num
