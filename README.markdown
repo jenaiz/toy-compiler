@@ -9,13 +9,13 @@ I hope that you enjoy the code.
 
 Chapters
 --------
-The full tutorial are 16 chapters. I decided create a different folder for each chapter, because now I don't know how this tutorial is going to finish. Perhaps at the end I decide to put all together.
+The full tutorial are 16 chapters. At first I decide to create different folder but I saw that it isn't very DRY :).
 
 The different chapters:
 
-* [Part 1: INTRODUCTION][2]
+* **Part 1: INTRODUCTION**
 
-* Part 2: EXPRESSION PARSING
+* **Part 2: EXPRESSION PARSING**
 
 * Part 3: MORE EXPRESSIONS
 
@@ -44,6 +44,8 @@ The different chapters:
 * Part 15: BACK TO THE FUTURE
 
 * Part 16: UNIT CONSTRUCTION
+
+(Note: Chapter in bold are... done!)
 
 Inspired in...
 --------------

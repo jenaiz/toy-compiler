@@ -1,5 +1,10 @@
 #!/usr/bin/env ruby
 
+## Chapter I
+def init
+  get_char
+end
+
 def get_char
   @look = gets.chomp
 end
@@ -43,8 +48,7 @@ def emit_ln(input)
   print "\n"
 end
 
-def init
-  get_char
+## Chapter II
+def expression
+  emit_ln('MOVE #' + get_num + ',D0')
 end
-
-init
