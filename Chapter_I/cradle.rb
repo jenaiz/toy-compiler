@@ -24,13 +24,13 @@ def is_alpha?(input)
   return !is_digit?(input)
 end
 
-def get_name(input)
-  expected("Name") unless is_alpha?(input)
+def get_name
+  expected("Name") unless is_alpha?(@look)
   get_char
 end
 
-def get_num(input)
-  expected("Integer") unless is_digit?(input)
+def get_num
+  expected("Integer") unless is_digit?(@look)
   get_char
 end
 
@@ -48,3 +48,5 @@ def init
 end
 
 init
+get_name
+get_num
