@@ -85,12 +85,13 @@ def term
   end
 end
 
+# Parse and Translate an Expression
+#
 def expression
-  term
-  emit_ln 'MOVE D0, -(SP)'
-  
+  term  
   operations = ['+', '-']
   while (operations.any? { |op| @look == op })
+    emit_ln 'MOVE D0, -(SP)'    
     operation = case @look
     when '+'
       add
@@ -102,12 +103,16 @@ def expression
   end
 end
 
+# Recognize and Translate an Add
+#
 def add
   match '+'
   term
   emit_ln 'ADD (SP)+, D1'
 end
 
+# Recognize and Translate a Subtract
+#
 def subtract
   match '-'
   term
@@ -118,7 +123,7 @@ end
 # Parse and Translate a Math Factor
 #
 def factor
-  emit_ln "MOVE #{get_num},D0"
+  emit_ln "MOVE ##{get_num},D0"
 end
 
 # Recognize and Translate a Multiply
