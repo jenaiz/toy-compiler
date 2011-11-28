@@ -50,10 +50,9 @@ The different chapters:
 Inspired in...
 --------------
 
-This tutorial is inspired on the idea of [Jack Crenshaw][1].
+This pet project is inspired on the tutorial of [Jack Crenshaw][1].
 
 Copyright © 2011 Jesús Navarrete. Licensed under the MIT license
 See LICENSE file for details
 
 [1]: http://compilers.iecc.com/crenshaw/ "Let's Build a Compiler"
-[2]: http://github.com/jenaiz/toy-compiler/tree/master/Chapter_I "Chapter I"
