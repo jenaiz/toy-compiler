@@ -4,25 +4,25 @@ require 'test/unit'
 require 'lib/cradle'
 
 class CradleTest < Test::Unit::TestCase
-  #def test_init
-  #  assert false
-  #end
-  #
-  #def test_get_char
-  #  assert false
-  #end
-  #
-  #def test_error
-  #  assert false
-  #end
+  def test_init
+    assert false
+  end
+  
+  def test_get_char
+    assert false
+  end
+  
+  def test_error
+    assert false
+  end
 
-  #def test_expected
-  #  assert false
-  #end
-  #
-  #def test_match
-  #  assert false
-  #end
+  def test_expected
+    assert false
+  end
+  
+  def test_match
+    assert false
+  end
 
   def test_is_digit
     assert_equal true, is_digit?(1), "This is not a digit"
@@ -35,25 +35,24 @@ class CradleTest < Test::Unit::TestCase
   end
   
   def test_get_name
-    @look = 1
-    assert_equal 'Name Expected', get_name, "This is not a 'Name'"
+    assert false
   end
   
-  #def test_get_num
-  #  assert false
-  #end
-  #
-  #def test_emit
-  #  assert false
-  #end
-  #
-  #def test_emit_ln
-  #  assert false
-  #end
+  def test_get_num
+    assert false
+  end
+  
+  def test_emit
+    assert false
+  end
+  
+  def test_emit_ln
+    assert false
+  end
 
   ## Chapter II
-  #def test_expression
-  #  assert false
-  #end
+  def test_expression
+    assert false
+  end
 end
   
