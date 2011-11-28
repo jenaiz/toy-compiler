@@ -15,7 +15,7 @@ The different chapters:
 
 * **Part 1: INTRODUCTION**
 
-* **Part 2: EXPRESSION PARSING**
+* Part 2: EXPRESSION PARSING (middle)
 
 * Part 3: MORE EXPRESSIONS
 
