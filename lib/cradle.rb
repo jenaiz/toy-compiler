@@ -70,7 +70,19 @@ end
 
 ## Chapter II
 def term
-  emit_ln('MOVE #' + get_num + ',D0')
+  factor
+  operations = ['*', '/']
+  while (operations.any? { |op| @look == op })
+    emit_ln 'MOVE D0, -(SP)'
+    operation = case @look
+    when '*'
+      multiply
+    when '/'
+      divide
+    else
+      expected('Mulop')
+    end
+  end
 end
 
 def expression
@@ -88,7 +100,6 @@ def expression
       expected('Addop')
     end
   end
-  
 end
 
 def add
@@ -102,4 +113,27 @@ def subtract
   term
   emit_ln 'SUB (SP)+, D0'
   emit_ln 'NEG D0'
+end
+
+# Parse and Translate a Math Factor
+#
+def factor
+  emit_ln "MOVE #{get_num},D0"
+end
+
+# Recognize and Translate a Multiply
+#
+def multiply
+  match '*'
+  factor
+  emit_ln 'MULS (SP)+,D0'
+end
+
+# Recognize and Translate a Divide
+#
+def divide
+  match '/'
+  factor
+  emit_ln 'MOVE (SP)+,D1'
+  emit_ln 'DIVS D1,D0'
 end
