@@ -75,7 +75,7 @@ end
 
 def expression
   term
-  emit_ln('MOVE D0, D1')
+  emit_ln 'MOVE D0, -(SP)'
   
   operations = ['+', '-']
   while (operations.any? { |op| @look == op })
@@ -94,12 +94,12 @@ end
 def add
   match '+'
   term
-  emit_ln 'ADD D0, D1'
+  emit_ln 'ADD (SP)+, D1'
 end
 
 def subtract
   match '-'
   term
-  emit_ln 'SUB D1, D0'
+  emit_ln 'SUB (SP)+, D0'
   emit_ln 'NEG D0'
 end
