@@ -54,5 +54,25 @@ class CradleTest < Test::Unit::TestCase
   def test_expression
     assert false
   end
+  
+  def test_add
+    assert false
+  end
+  
+  def test_subtract
+    assert false
+  end
+  
+  def test_factor
+    assert false
+  end
+  
+  def test_multiply
+    assert false
+  end
+  
+  def test_divide
+    assert false
+  end
 end
   
