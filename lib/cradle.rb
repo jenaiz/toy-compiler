@@ -129,7 +129,7 @@ def factor
   if @look == '(' 
     match '('
     expression
-    match '('
+    match ')'
   else
     emit_ln "MOVE ##{get_num},D0"
   end
