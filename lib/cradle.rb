@@ -130,6 +130,8 @@ def factor
     match '('
     expression
     match ')'
+  elsif is_alpha @look
+    emit_ln "MOVE #{get_name}(PC),D0"
   else
     emit_ln "MOVE ##{get_num},D0"
   end
