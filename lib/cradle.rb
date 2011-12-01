@@ -74,13 +74,10 @@ def term
   operations = ['*', '/']
   while (operations.any? { |op| @look == op })
     emit_ln 'MOVE D0, -(SP)'
-    operation = case @look
-    when '*'
-      multiply
-    when '/'
-      divide
-    else
-      expected('Mulop')
+    case @look
+    when '*': multiply
+    when '/': divide
+    else expected('Mulop')
     end
   end
 end
@@ -88,19 +85,25 @@ end
 # Parse and Translate an Expression
 #
 def expression
-  term  
-  operations = ['+', '-']
-  while (operations.any? { |op| @look == op })
+  if is_addop @look
+    emit_ln 'CLR D0'
+  else
+    term
+  end
+  while is_addop @look
     emit_ln 'MOVE D0, -(SP)'    
-    operation = case @look
-    when '+'
-      add
-    when '-'
-      subtract
-    else
-      expected('Addop')
+    case @look
+    when '+': add
+    when '-': subtract
+    else expected('Addop')
     end
   end
+end
+
+# Recognize an Addop
+#
+def is_addop(input)
+  ['+', '-'].any? { |op| @look == op }
 end
 
 # Recognize and Translate an Add
@@ -123,7 +126,13 @@ end
 # Parse and Translate a Math Factor
 #
 def factor
-  emit_ln "MOVE ##{get_num},D0"
+  if @look == '(' 
+    match '('
+    expression
+    match '('
+  else
+    emit_ln "MOVE ##{get_num},D0"
+  end
 end
 
 # Recognize and Translate a Multiply
