@@ -131,12 +131,26 @@ def factor
     expression
     match ')'
   elsif is_alpha?@look
-    emit_ln "MOVE #{get_name}(PC),D0"
+    #emit_ln "MOVE #{get_name}(PC),D0"
+    ident
   else
     emit_ln "MOVE ##{get_num},D0"
   end
 end
 
+#
+# Parse and Translate an Identifier 
+#
+def ident
+  name = get_name
+  if @look == '('
+    match '('
+    match ')'
+    emit_ln "BSR #{name}"
+  else
+    emit_ln "MOVE #{name} (PC),D0"
+  end
+end
 # Recognize and Translate a Multiply
 #
 def multiply
