@@ -2,13 +2,18 @@
 
 ## Chapter I
 def init
+  @expression = gets.chomp
+  @expression = @expression.split(//)
+  puts @expression.class
+  @number = 0
   get_char
 end
 
 # Read New Character From Input Stream
 #
 def get_char
-  @look = gets.chomp
+  @look = @expression[@number]
+  @number +=1
 end
 
 # Report an Error
