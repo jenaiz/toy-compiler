@@ -17,7 +17,7 @@ The different chapters:
 
 * **Part 2: EXPRESSION PARSING**
 
-* Part 3: MORE EXPRESSIONS
+* **Part 3: MORE EXPRESSIONS**
 
 * Part 4 INTERPRETERS
 
