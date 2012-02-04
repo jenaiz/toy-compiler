@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-TAB = /\u0009/
+TAB = "\t"
 
 ## Chapter I
 def init
