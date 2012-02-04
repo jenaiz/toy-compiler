@@ -1,11 +1,14 @@
 #!/usr/bin/env ruby
 
+TAB = /\u0009/
+
 ## Chapter I
 def init
   @expression = gets.chomp
   @expression = @expression.split(//)
   @number = 0
   get_char
+  skip_white
 end
 
 # Read New Character From Input Stream
@@ -30,7 +33,12 @@ end
 # Match a Specific Input Character
 #
 def match(input)
-  @look == input ? get_char : expected("'" + input.to_s + "'")
+  if @look == input
+    get_char
+    skip_white
+  else 
+    expected("'" + input.to_s + "'")
+  end
 end
 
 # Recognize a Decimal Digit
@@ -51,6 +59,17 @@ def is_alpha?(input)
   !is_digit?(input)
 end
 
+# Recognize White Space
+def is_white(input)
+  [' ', TAB].any? { |op| @look == op } 
+end
+
+def skip_white
+  while is_white(@look)
+    get_char
+  end
+end
+
 # Get an Identifier
 #
 def get_name
@@ -60,6 +79,7 @@ def get_name
     token = token + @look.upcase
     get_char
   end
+  skip_white
   return token
 end
 
@@ -72,6 +92,7 @@ def get_num
     value = value + @look
     get_char
   end
+  skip_white
   return value
 end
 
