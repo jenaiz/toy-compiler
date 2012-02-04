@@ -4,7 +4,6 @@
 def init
   @expression = gets.chomp
   @expression = @expression.split(//)
-  puts @expression.class
   @number = 0
   get_char
 end
