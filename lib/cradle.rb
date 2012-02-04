@@ -2,7 +2,6 @@
 
 TAB = "\t"
 
-## Chapter I
 def init
   @expression = gets.chomp
   @expression = @expression.split(//)
@@ -60,10 +59,13 @@ def is_alpha?(input)
 end
 
 # Recognize White Space
+#
 def is_white(input)
   [' ', TAB].any? { |op| @look == op } 
 end
 
+# Skip over leading white Space
+#
 def skip_white
   while is_white(@look)
     get_char
@@ -96,16 +98,20 @@ def get_num
   return value
 end
 
+# Output a string with tab
+#
 def emit(input)
   print "\t" + input
 end
 
+# Output a string with tab and CRLF
+#
 def emit_ln(input)
   emit(input)
   print "\n"
 end
 
-## Chapter II
+# Parse and translate a match term
 def term
   factor
   operations = ['*', '/']
@@ -174,7 +180,6 @@ def factor
   end
 end
 
-#
 # Parse and Translate an Identifier 
 #
 def ident
@@ -205,9 +210,8 @@ def divide
   emit_ln 'DIVS D1,D0'
 end
 
-# TODO
-#   if Look <> CR then Expected('Newline');
-
+# Parse and translate an assignment statement
+#
 def assignment
   @name = get_name
   match '='
