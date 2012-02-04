@@ -74,5 +74,9 @@ class CradleTest < Test::Unit::TestCase
   def test_divide
     assert false
   end
+  
+  def assignment
+    assert true
+  end
 end
   

@@ -40,6 +40,12 @@ def is_digit?(input)
     !!Float(input) rescue false
 end
 
+# Recognize an Alphanumeric
+#
+def is_al_num(input)
+  is_alpha?(input) || is_digit?(input)
+end
+
 # Recognize an Alpha Character
 #
 def is_alpha?(input)
@@ -50,18 +56,24 @@ end
 #
 def get_name
   expected("Name") unless is_alpha?(@look)
-  result = @look.upcase
-  get_char
-  return result
+  token = ""
+  while is_al_num(@look)
+    token = token + @look.upcase
+    get_char
+  end
+  return token
 end
 
 # Get a Number
 #
 def get_num
   expected("Integer") unless is_digit?(@look)
-  result = @look
-  get_char
-  return result
+  value = ""
+  while is_digit?(@look)
+    value = value + @look
+    get_char
+  end
+  return value
 end
 
 def emit(input)
@@ -136,7 +148,6 @@ def factor
     expression
     match ')'
   elsif is_alpha?@look
-    #emit_ln "MOVE #{get_name}(PC),D0"
     ident
   else
     emit_ln "MOVE ##{get_num},D0"
@@ -156,6 +167,7 @@ def ident
     emit_ln "MOVE #{name} (PC),D0"
   end
 end
+
 # Recognize and Translate a Multiply
 #
 def multiply
@@ -171,4 +183,15 @@ def divide
   factor
   emit_ln 'MOVE (SP)+,D1'
   emit_ln 'DIVS D1,D0'
+end
+
+# TODO
+#   if Look <> CR then Expected('Newline');
+
+def assignment
+  @name = get_name
+  match '='
+  expression
+  emit_ln "LEA #{@name} (PC),A0"
+  emit_ln 'MOVE D0,(A0)'
 end
