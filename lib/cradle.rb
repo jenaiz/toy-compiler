@@ -2,6 +2,8 @@
 
 TAB = "\t"
 
+@look = ""
+
 def init
   @expression = gets.chomp
   @expression = @expression.split(//)
